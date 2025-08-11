@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge"
 import type { ReactNode } from "react"
 import { ErrorDisplay } from "@/components/error-display"
 
+export const revalidate = 300 // 5 minutes
+
 export async function generateStaticParams() {
   const { ok, data: pressReleases } = await getPressReleases()
   if (!ok || !pressReleases) {
