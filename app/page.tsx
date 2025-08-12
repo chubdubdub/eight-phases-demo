@@ -30,13 +30,6 @@ export default async function PressRoomPage() {
         <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
           Stay up-to-date with the latest announcements and media coverage from Eight Phases.
         </p>
-        <div className="mt-6">
-          <Link href="/press-kit">
-            <Button variant="outline" className="mr-4">
-              Download Press Kit
-            </Button>
-          </Link>
-        </div>
       </div>
 
       {/* Press Room Client Component */}
@@ -44,6 +37,21 @@ export default async function PressRoomPage() {
         initialPressReleases={pressReleasesResult.data}
         availableTags={availableTags}
       />
+      
+      {/* Press Kit Section */}
+      <div className="mt-16 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h3 className="text-2xl font-semibold text-white mb-4">Media Resources</h3>
+          <p className="text-gray-400 mb-6">
+            Access our complete press kit with logos, brand guidelines, high-resolution images, and company information.
+          </p>
+          <Link href="/press-kit">
+            <Button variant="outline" size="lg">
+              Download Press Kit
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
