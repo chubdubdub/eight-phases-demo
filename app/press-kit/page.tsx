@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, getLocale } from 'next-intl/server'
 import { getPressKitAssets } from "@/lib/contentful"
 import { ArrowLeft, Download, FileText, Image as ImageIcon, Folder } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -39,7 +39,8 @@ const getCategoryDescription = (category: string, t: any) => {
 
 export default async function PressKitPage() {
   const t = await getTranslations('pressKit')
-  const { ok, data: pressKitAssets, error } = await getPressKitAssets()
+  const locale = await getLocale()
+  const { ok, data: pressKitAssets, error } = await getPressKitAssets(undefined, locale)
 
   if (!ok || !pressKitAssets) {
     return (

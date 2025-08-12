@@ -89,7 +89,7 @@ export type ApiResponse<T> = {
 }
 
 // Function to fetch all press releases with optional filtering
-export const getPressReleases = async (filters?: SearchFilters): Promise<ApiResponse<EntryCollection<PressRelease>>> => {
+export const getPressReleases = async (filters?: SearchFilters, locale: string = 'en'): Promise<ApiResponse<EntryCollection<PressRelease>>> => {
   const { client, error } = getContentfulClient()
   if (!client) {
     return { ok: false, data: null, error }
@@ -99,6 +99,7 @@ export const getPressReleases = async (filters?: SearchFilters): Promise<ApiResp
     const query: any = {
       content_type: "pressRelease",
       order: ["-fields.publishDate"],
+      locale: locale === 'fr' ? 'fr-FR' : 'en-US', // Map our locale codes to Contentful locale codes
     }
 
     // Apply filters if provided
@@ -131,7 +132,7 @@ export const getPressReleases = async (filters?: SearchFilters): Promise<ApiResp
 }
 
 // Function to fetch a single press release by its slug
-export const getPressReleaseBySlug = async (slug: string): Promise<ApiResponse<PressRelease>> => {
+export const getPressReleaseBySlug = async (slug: string, locale: string = 'en'): Promise<ApiResponse<PressRelease>> => {
   const { client, error } = getContentfulClient()
   if (!client) {
     return { ok: false, data: null, error }
@@ -142,6 +143,7 @@ export const getPressReleaseBySlug = async (slug: string): Promise<ApiResponse<P
       content_type: "pressRelease",
       "fields.slug": slug,
       limit: 1,
+      locale: locale === 'fr' ? 'fr-FR' : 'en-US',
     })
 
     if (entries.items && entries.items.length > 0) {
@@ -156,7 +158,7 @@ export const getPressReleaseBySlug = async (slug: string): Promise<ApiResponse<P
 }
 
 // Function to fetch related press releases based on category and tags
-export const getRelatedPressReleases = async (currentSlug: string, category: string, tags?: string[], limit: number = 3): Promise<ApiResponse<EntryCollection<PressRelease>>> => {
+export const getRelatedPressReleases = async (currentSlug: string, category: string, tags?: string[], limit: number = 3, locale: string = 'en'): Promise<ApiResponse<EntryCollection<PressRelease>>> => {
   const { client, error } = getContentfulClient()
   if (!client) {
     return { ok: false, data: null, error }
@@ -169,6 +171,7 @@ export const getRelatedPressReleases = async (currentSlug: string, category: str
       "fields.category": category,
       order: ["-fields.publishDate"],
       limit,
+      locale: locale === 'fr' ? 'fr-FR' : 'en-US',
     }
 
     // If tags are provided, prefer articles with matching tags
@@ -185,7 +188,7 @@ export const getRelatedPressReleases = async (currentSlug: string, category: str
 }
 
 // Function to fetch all press kit assets
-export const getPressKitAssets = async (category?: string): Promise<ApiResponse<EntryCollection<PressKitAsset>>> => {
+export const getPressKitAssets = async (category?: string, locale: string = 'en'): Promise<ApiResponse<EntryCollection<PressKitAsset>>> => {
   const { client, error } = getContentfulClient()
   if (!client) {
     return { ok: false, data: null, error }
@@ -195,6 +198,7 @@ export const getPressKitAssets = async (category?: string): Promise<ApiResponse<
     const query: any = {
       content_type: "pressKitAsset",
       order: ["fields.category", "fields.title"],
+      locale: locale === 'fr' ? 'fr-FR' : 'en-US',
     }
 
     if (category) {
@@ -210,7 +214,7 @@ export const getPressKitAssets = async (category?: string): Promise<ApiResponse<
 }
 
 // Function to get all unique tags from press releases (for filter options)
-export const getPressReleaseTags = async (): Promise<ApiResponse<string[]>> => {
+export const getPressReleaseTags = async (locale: string = 'en'): Promise<ApiResponse<string[]>> => {
   const { client, error } = getContentfulClient()
   if (!client) {
     return { ok: false, data: null, error }
@@ -221,6 +225,7 @@ export const getPressReleaseTags = async (): Promise<ApiResponse<string[]>> => {
       content_type: "pressRelease",
       select: "fields.tags",
       limit: 1000, // Get all entries to collect tags
+      locale: locale === 'fr' ? 'fr-FR' : 'en-US',
     })
 
     const allTags = new Set<string>()

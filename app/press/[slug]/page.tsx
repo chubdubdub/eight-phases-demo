@@ -1,5 +1,6 @@
 import { getPressReleaseBySlug, getPressReleases, getRelatedPressReleases } from "@/lib/contentful"
 import { notFound } from "next/navigation"
+import { getLocale, getTranslations } from 'next-intl/server'
 import Image from "next/image"
 import Link from "next/link"
 import { documentToReactComponents, type Options } from "@contentful/rich-text-react-renderer"
@@ -13,13 +14,21 @@ import { ErrorDisplay } from "@/components/error-display"
 export const revalidate = 300 // 5 minutes
 
 export async function generateStaticParams() {
-  const { ok, data: pressReleases } = await getPressReleases()
-  if (!ok || !pressReleases) {
-    return []
+  // Generate params for both locales
+  const locales = ['en', 'fr']
+  const allParams = []
+  
+  for (const locale of locales) {
+    const { ok, data: pressReleases } = await getPressReleases(undefined, locale)
+    if (ok && pressReleases) {
+      pressReleases.items.forEach((release) => {
+        allParams.push({
+          slug: release.fields.slug,
+        })
+      })
+    }
   }
-  return pressReleases.items.map((release) => ({
-    slug: release.fields.slug,
-  }))
+  return allParams
 }
 
 const renderOptions: Options = {
@@ -73,7 +82,9 @@ const renderOptions: Options = {
 }
 
 export default async function PressReleasePage({ params }: { params: { slug: string } }) {
-  const { ok, data: release, error } = await getPressReleaseBySlug(params.slug)
+  const locale = await getLocale()
+  const t = await getTranslations('article')
+  const { ok, data: release, error } = await getPressReleaseBySlug(params.slug, locale)
 
   if (!ok || !release) {
     if (error === "Press release not found.") {
@@ -90,7 +101,9 @@ export default async function PressReleasePage({ params }: { params: { slug: str
   const { ok: relatedOk, data: relatedReleases } = await getRelatedPressReleases(
     params.slug,
     release.category,
-    release.tags
+    release.tags,
+    3,
+    locale
   )
 
   return (
@@ -129,7 +142,7 @@ export default async function PressReleasePage({ params }: { params: { slug: str
         {/* Article Tags */}
         {release.tags && release.tags.length > 0 && (
           <div className="mt-8 pt-6 border-t border-gray-800">
-            <h3 className="text-sm font-semibold text-gray-400 mb-3">Tags</h3>
+            <h3 className="text-sm font-semibold text-gray-400 mb-3">{t('tags')}</h3>
             <div className="flex flex-wrap gap-2">
               {release.tags.map(tag => (
                 <Badge key={tag} variant="secondary" className="bg-gray-800 text-gray-300">
@@ -151,7 +164,7 @@ export default async function PressReleasePage({ params }: { params: { slug: str
 
         <div className="mt-12 pt-8 border-t border-gray-800">
           <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-            &larr; Back to Press Room
+            &larr; {t('backToPress')}
           </Link>
         </div>
       </article>
@@ -160,8 +173,8 @@ export default async function PressReleasePage({ params }: { params: { slug: str
       {relatedOk && relatedReleases && relatedReleases.items.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 md:px-8 mt-16">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-2">Related Articles</h2>
-            <p className="text-gray-400">More news from {release.category}</p>
+            <h2 className="text-3xl font-bold text-white mb-2">{t('relatedArticles')}</h2>
+            <p className="text-gray-400">{t('moreFromCategory', { category: release.category })}</p>
           </div>
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

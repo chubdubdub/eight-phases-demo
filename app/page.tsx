@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, getLocale } from 'next-intl/server'
 import { getPressReleases, getPressReleaseTags } from "@/lib/contentful"
 import { ErrorDisplay } from "@/components/error-display"
 import { PressRoomClient } from "@/components/press-room-client"
@@ -9,9 +9,10 @@ export const revalidate = 300 // 5 minutes
 
 export default async function PressRoomPage() {
   const t = await getTranslations('home')
+  const locale = await getLocale()
   const [pressReleasesResult, tagsResult] = await Promise.all([
-    getPressReleases(),
-    getPressReleaseTags()
+    getPressReleases(undefined, locale),
+    getPressReleaseTags(locale)
   ])
 
   if (!pressReleasesResult.ok || !pressReleasesResult.data) {

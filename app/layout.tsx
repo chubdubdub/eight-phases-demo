@@ -6,6 +6,7 @@ import { getLocale, getMessages, getTranslations } from 'next-intl/server'
 import "./globals.css"
 import Link from "next/link"
 import { Moon } from "lucide-react"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -42,6 +43,7 @@ export default async function RootLayout({
                     {t('header.brand')} <span className="font-light text-gray-400">{t('header.tagline')}</span>
                   </h1>
                 </Link>
+                <LanguageSwitcher />
               </div>
             </header>
             <main className="flex-grow">{children}</main>

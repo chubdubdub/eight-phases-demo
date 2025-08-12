@@ -122,5 +122,10 @@
       "configMissing": "Contentful environment variables are not set. Please add CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN to your environment variables.",
       "fetchFailed": "Failed to fetch data from Contentful."
     }
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "fr": "Français"
   }
 }
