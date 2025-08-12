@@ -12,7 +12,7 @@
     "@contentful/rich-text-react-renderer": "latest",
     "@contentful/rich-text-types": "latest",
     "@formatjs/intl-localematcher": "^0.6.1",
-    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "contentful": "latest",
@@ -20,20 +20,20 @@
     "negotiator": "^1.0.0",
     "next": "14.2.16",
     "next-intl": "^4.3.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "tailwind-merge": "^2.5.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
-    "@types/node": "^22",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.17.1",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.2.4",
-    "postcss": "^8.5",
+    "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "typescript": "^5.9.2"
   }
 }
