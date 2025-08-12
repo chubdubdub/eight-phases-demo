@@ -1,0 +1,131 @@
+{
+  "layout": {
+    "header": {
+      "brand": "Eight Phases",
+      "tagline": "Press Room"
+    },
+    "footer": {
+      "copyright": "© {year} Eight Phases Hotels. All rights reserved."
+    }
+  },
+  "home": {
+    "title": "Latest News",
+    "subtitle": "Stay up-to-date with the latest announcements and media coverage from Eight Phases.",
+    "mediaResources": {
+      "title": "Media Resources",
+      "description": "Access our complete press kit with logos, brand guidelines, high-resolution images, and company information.",
+      "downloadButton": "Download Press Kit"
+    }
+  },
+  "pressRoom": {
+    "search": {
+      "placeholder": "Search press releases, categories, or tags..."
+    },
+    "filters": {
+      "button": "Filters",
+      "categories": "Categories",
+      "tags": "Tags",
+      "dateRange": "Date Range",
+      "from": "From",
+      "to": "To",
+      "clearAll": "Clear all filters",
+      "showMore": "Show more ({count})",
+      "showLess": "Show less"
+    },
+    "results": {
+      "showing": "{count} press releases",
+      "filtered": "{filtered} of {total} press releases"
+    },
+    "noResults": {
+      "title": "No Press Releases Found",
+      "searchAdjust": "Try adjusting your search terms or filters.",
+      "configError": "Please check your Contentful space configuration."
+    },
+    "readMore": "Read More",
+    "viewMode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "tags": {
+      "more": "+{count} more"
+    }
+  },
+  "categories": {
+    "Awards": "Awards",
+    "Hotel Openings": "Hotel Openings",
+    "Partnerships": "Partnerships",
+    "Executive News": "Executive News",
+    "Company Updates": "Company Updates",
+    "Events": "Events",
+    "Sustainability": "Sustainability"
+  },
+  "pressKit": {
+    "title": "Press Kit",
+    "subtitle": "Download official logos, brand guidelines, fact sheets, and high-resolution images for your coverage of Eight Phases Hotels.",
+    "aboutTitle": "About Eight Phases Hotels",
+    "aboutDescription": "Eight Phases Hotels represents a new era in luxury hospitality, combining timeless elegance with modern innovation. Our properties offer guests exceptional experiences across unique destinations worldwide.",
+    "founded": {
+      "label": "Founded",
+      "value": "2024"
+    },
+    "properties": {
+      "label": "Properties",
+      "value": "12"
+    },
+    "headquarters": {
+      "label": "Headquarters",
+      "value": "New York, USA"
+    },
+    "coverage": "Worldwide",
+    "download": "Download",
+    "updated": "Updated",
+    "noAssets": {
+      "title": "No Press Kit Assets Found",
+      "description": "Press kit resources will appear here when available."
+    },
+    "mediaContact": "Media Contact",
+    "pressInquiries": "Press Inquiries",
+    "partnershipInquiries": "Partnership Inquiries",
+    "backToPress": "Back to Press Room",
+    "assetCategories": {
+      "Logos": {
+        "title": "Logos",
+        "description": "Official Eight Phases logos in various formats and sizes"
+      },
+      "Brand Guidelines": {
+        "title": "Brand Guidelines",
+        "description": "Brand usage guidelines and style standards"
+      },
+      "Fact Sheets": {
+        "title": "Fact Sheets",
+        "description": "Company information and key statistics"
+      },
+      "Images": {
+        "title": "Images",
+        "description": "High-resolution property and marketing images"
+      },
+      "Documents": {
+        "title": "Documents",
+        "description": "Additional corporate documents and resources"
+      }
+    }
+  },
+  "article": {
+    "tags": "Tags",
+    "relatedArticles": "Related Articles",
+    "moreFromCategory": "More news from {category}",
+    "backToPress": "Back to Press Room"
+  },
+  "error": {
+    "title": "Error",
+    "contentful": {
+      "configMissing": "Contentful environment variables are not set. Please add CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN to your environment variables.",
+      "fetchFailed": "Failed to fetch data from Contentful."
+    }
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "fr": "Français"
+  }
+}

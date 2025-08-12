@@ -1,0 +1,131 @@
+{
+  "layout": {
+    "header": {
+      "brand": "Eight Phases",
+      "tagline": "Salle de Presse"
+    },
+    "footer": {
+      "copyright": "© {year} Eight Phases Hotels. Tous droits réservés."
+    }
+  },
+  "home": {
+    "title": "Dernières Nouvelles",
+    "subtitle": "Restez informé des dernières annonces et de la couverture médiatique d'Eight Phases.",
+    "mediaResources": {
+      "title": "Ressources Médias",
+      "description": "Accédez à notre kit de presse complet avec logos, directives de marque, images haute résolution et informations sur l'entreprise.",
+      "downloadButton": "Télécharger le Kit de Presse"
+    }
+  },
+  "pressRoom": {
+    "search": {
+      "placeholder": "Rechercher des communiqués de presse, catégories ou tags..."
+    },
+    "filters": {
+      "button": "Filtres",
+      "categories": "Catégories",
+      "tags": "Tags",
+      "dateRange": "Période",
+      "from": "Du",
+      "to": "Au",
+      "clearAll": "Effacer tous les filtres",
+      "showMore": "Afficher plus ({count})",
+      "showLess": "Afficher moins"
+    },
+    "results": {
+      "showing": "{count} communiqués de presse",
+      "filtered": "{filtered} sur {total} communiqués de presse"
+    },
+    "noResults": {
+      "title": "Aucun Communiqué de Presse Trouvé",
+      "searchAdjust": "Essayez d'ajuster vos termes de recherche ou filtres.",
+      "configError": "Veuillez vérifier votre configuration Contentful."
+    },
+    "readMore": "Lire Plus",
+    "viewMode": {
+      "grid": "Vue grille",
+      "list": "Vue liste"
+    },
+    "tags": {
+      "more": "+{count} de plus"
+    }
+  },
+  "categories": {
+    "Awards": "Récompenses",
+    "Hotel Openings": "Ouvertures d'Hôtels",
+    "Partnerships": "Partenariats",
+    "Executive News": "Nouvelles Exécutives",
+    "Company Updates": "Mises à Jour de l'Entreprise",
+    "Events": "Événements",
+    "Sustainability": "Durabilité"
+  },
+  "pressKit": {
+    "title": "Kit de Presse",
+    "subtitle": "Téléchargez les logos officiels, directives de marque, fiches d'information et images haute résolution pour votre couverture d'Eight Phases Hotels.",
+    "aboutTitle": "À Propos d'Eight Phases Hotels",
+    "aboutDescription": "Eight Phases Hotels représente une nouvelle ère dans l'hôtellerie de luxe, combinant élégance intemporelle et innovation moderne. Nos propriétés offrent aux clients des expériences exceptionnelles dans des destinations uniques à travers le monde.",
+    "founded": {
+      "label": "Fondé",
+      "value": "2024"
+    },
+    "properties": {
+      "label": "Propriétés",
+      "value": "12"
+    },
+    "headquarters": {
+      "label": "Siège Social",
+      "value": "New York, États-Unis"
+    },
+    "coverage": "Dans le Monde",
+    "download": "Télécharger",
+    "updated": "Mis à jour",
+    "noAssets": {
+      "title": "Aucune Ressource de Kit de Presse Trouvée",
+      "description": "Les ressources du kit de presse apparaîtront ici lorsqu'elles seront disponibles."
+    },
+    "mediaContact": "Contact Média",
+    "pressInquiries": "Demandes de Presse",
+    "partnershipInquiries": "Demandes de Partenariat",
+    "backToPress": "Retour à la Salle de Presse",
+    "assetCategories": {
+      "Logos": {
+        "title": "Logos",
+        "description": "Logos officiels Eight Phases dans divers formats et tailles"
+      },
+      "Brand Guidelines": {
+        "title": "Directives de Marque",
+        "description": "Directives d'utilisation de la marque et normes de style"
+      },
+      "Fact Sheets": {
+        "title": "Fiches d'Information",
+        "description": "Informations sur l'entreprise et statistiques clés"
+      },
+      "Images": {
+        "title": "Images",
+        "description": "Images de propriétés et marketing haute résolution"
+      },
+      "Documents": {
+        "title": "Documents",
+        "description": "Documents d'entreprise et ressources supplémentaires"
+      }
+    }
+  },
+  "article": {
+    "tags": "Tags",
+    "relatedArticles": "Articles Connexes",
+    "moreFromCategory": "Plus de nouvelles de {category}",
+    "backToPress": "Retour à la Salle de Presse"
+  },
+  "error": {
+    "title": "Erreur",
+    "contentful": {
+      "configMissing": "Les variables d'environnement Contentful ne sont pas définies. Veuillez ajouter CONTENTFUL_SPACE_ID et CONTENTFUL_ACCESS_TOKEN à vos variables d'environnement.",
+      "fetchFailed": "Échec de la récupération des données depuis Contentful."
+    }
+  },
+  "language": {
+    "select": "Sélectionner la langue",
+    "en": "English",
+    "fr": "Français"
+  }
+}
