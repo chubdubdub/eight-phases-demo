@@ -1,10 +1,12 @@
-import { getPressReleaseBySlug, getPressReleases } from "@/lib/contentful"
+import { getPressReleaseBySlug, getPressReleases, getRelatedPressReleases } from "@/lib/contentful"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { documentToReactComponents, type Options } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES, type Document } from "@contentful/rich-text-types"
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Calendar, Moon } from "lucide-react"
 import type { ReactNode } from "react"
 import { ErrorDisplay } from "@/components/error-display"
 
@@ -84,6 +86,13 @@ export default async function PressReleasePage({ params }: { params: { slug: str
     )
   }
 
+  // Fetch related articles
+  const { ok: relatedOk, data: relatedReleases } = await getRelatedPressReleases(
+    params.slug,
+    release.category,
+    release.tags
+  )
+
   return (
     <div className="py-12 md:py-16">
       <article className="max-w-3xl mx-auto px-4 md:px-0">
@@ -117,12 +126,109 @@ export default async function PressReleasePage({ params }: { params: { slug: str
           {documentToReactComponents(release.content as Document, renderOptions)}
         </div>
 
+        {/* Article Tags */}
+        {release.tags && release.tags.length > 0 && (
+          <div className="mt-8 pt-6 border-t border-gray-800">
+            <h3 className="text-sm font-semibold text-gray-400 mb-3">Tags</h3>
+            <div className="flex flex-wrap gap-2">
+              {release.tags.map(tag => (
+                <Badge key={tag} variant="secondary" className="bg-gray-800 text-gray-300">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Category Badge */}
+        {release.category && (
+          <div className="mt-6">
+            <Badge className="bg-primary/20 text-primary border-primary/30">
+              {release.category}
+            </Badge>
+          </div>
+        )}
+
         <div className="mt-12 pt-8 border-t border-gray-800">
           <Link href="/" className="text-sm font-semibold text-primary hover:underline">
             &larr; Back to Press Room
           </Link>
         </div>
       </article>
+      
+      {/* Related Articles Section */}
+      {relatedOk && relatedReleases && relatedReleases.items.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 md:px-8 mt-16">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-2">Related Articles</h2>
+            <p className="text-gray-400">More news from {release.category}</p>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {relatedReleases.items.map((relatedRelease) => (
+              <Card
+                key={relatedRelease.sys.id}
+                className="bg-gray-900 border-gray-800 text-white flex flex-col overflow-hidden group transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10"
+              >
+                <CardHeader className="p-0">
+                  <Link href={`/press/${relatedRelease.fields.slug}`} className="block">
+                    <div className="relative h-32 overflow-hidden">
+                      {relatedRelease.fields.coverImage?.fields?.file?.url ? (
+                        <Image
+                          src={`https:${relatedRelease.fields.coverImage.fields.file.url}`}
+                          alt={relatedRelease.fields.title}
+                          width={relatedRelease.fields.coverImage.fields.file.details.image?.width || 400}
+                          height={relatedRelease.fields.coverImage.fields.file.details.image?.height || 300}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                          <Moon className="w-8 h-8 text-gray-700" />
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                </CardHeader>
+                
+                <CardContent className="p-4 flex-grow">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="h-3 w-3 text-gray-400" />
+                    <span className="text-xs text-gray-400">
+                      {new Date(relatedRelease.fields.publishDate).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </span>
+                  </div>
+                  
+                  <CardTitle className="text-base mb-2">
+                    <Link
+                      href={`/press/${relatedRelease.fields.slug}`}
+                      className="hover:text-primary transition-colors line-clamp-2"
+                    >
+                      {relatedRelease.fields.title}
+                    </Link>
+                  </CardTitle>
+                  
+                  <p className="text-gray-400 text-sm line-clamp-2">
+                    {relatedRelease.fields.summary}
+                  </p>
+                  
+                  <div className="mt-3">
+                    <Link
+                      href={`/press/${relatedRelease.fields.slug}`}
+                      className="text-xs font-semibold text-primary hover:underline"
+                    >
+                      Read More &rarr;
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }
