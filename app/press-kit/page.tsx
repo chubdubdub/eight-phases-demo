@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { getTranslations } from 'next-intl/server'
 import { getPressKitAssets } from "@/lib/contentful"
 import { ArrowLeft, Download, FileText, Image as ImageIcon, Folder } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -31,24 +32,13 @@ const getCategoryIcon = (category: string) => {
   }
 }
 
-const getCategoryDescription = (category: string) => {
-  switch (category) {
-    case "Logos":
-      return "Official Eight Phases logos in various formats and sizes"
-    case "Brand Guidelines":
-      return "Brand usage guidelines and style standards"
-    case "Fact Sheets":
-      return "Company information and key statistics"
-    case "Images":
-      return "High-resolution property and marketing images"
-    case "Documents":
-      return "Additional corporate documents and resources"
-    default:
-      return "Press resources and materials"
-  }
+const getCategoryDescription = (category: string, t: any) => {
+  const categoryKey = category.replace(/\s+/g, ' ')
+  return t(`assetCategories.${categoryKey}.description`)
 }
 
 export default async function PressKitPage() {
+  const t = await getTranslations('pressKit')
   const { ok, data: pressKitAssets, error } = await getPressKitAssets()
 
   if (!ok || !pressKitAssets) {
@@ -58,9 +48,9 @@ export default async function PressKitPage() {
           <div className="mb-8">
             <Link href="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-4">
               <ArrowLeft className="h-4 w-4" />
-              Back to Press Room
+              {t('backToPress')}
             </Link>
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">Press Kit</h1>
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">{t('title')}</h1>
           </div>
           <ErrorDisplay message={error || "Could not fetch press kit assets."} />
         </div>
@@ -85,33 +75,32 @@ export default async function PressKitPage() {
         <div className="mb-12">
           <Link href="/" className="inline-flex items-center gap-2 text-primary hover:underline mb-4">
             <ArrowLeft className="h-4 w-4" />
-            Back to Press Room
+            {t('backToPress')}
           </Link>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">Press Kit</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">{t('title')}</h1>
           <p className="text-lg text-gray-400 max-w-2xl">
-            Download official logos, brand guidelines, fact sheets, and high-resolution images for your coverage of Eight Phases Hotels.
+            {t('subtitle')}
           </p>
         </div>
 
         {/* Press Kit Overview */}
         <div className="mb-12 p-6 bg-gray-900 border border-gray-700 rounded-lg">
-          <h2 className="text-2xl font-semibold text-white mb-4">About Eight Phases Hotels</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">{t('aboutTitle')}</h2>
           <p className="text-gray-300 leading-relaxed mb-4">
-            Eight Phases Hotels represents a new era in luxury hospitality, combining timeless elegance with modern innovation. 
-            Our properties offer guests exceptional experiences across unique destinations worldwide.
+            {t('aboutDescription')}
           </p>
           <div className="grid md:grid-cols-3 gap-4 text-sm">
             <div>
-              <h3 className="font-semibold text-white mb-1">Founded</h3>
-              <p className="text-gray-400">2020</p>
+              <h3 className="font-semibold text-white mb-1">{t('founded.label')}</h3>
+              <p className="text-gray-400">{t('founded.value')}</p>
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-1">Properties</h3>
-              <p className="text-gray-400">12 Worldwide</p>
+              <h3 className="font-semibold text-white mb-1">{t('properties.label')}</h3>
+              <p className="text-gray-400">{t('properties.value')} {t('coverage')}</p>
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-1">Headquarters</h3>
-              <p className="text-gray-400">New York, NY</p>
+              <h3 className="font-semibold text-white mb-1">{t('headquarters.label')}</h3>
+              <p className="text-gray-400">{t('headquarters.value')}</p>
             </div>
           </div>
         </div>
@@ -130,8 +119,8 @@ export default async function PressKitPage() {
                       {getCategoryIcon(category)}
                     </div>
                     <div>
-                      <h2 className="text-2xl font-semibold text-white">{category}</h2>
-                      <p className="text-gray-400 text-sm">{getCategoryDescription(category)}</p>
+                      <h2 className="text-2xl font-semibold text-white">{t(`assetCategories.${category}.title`)}</h2>
+                      <p className="text-gray-400 text-sm">{getCategoryDescription(category, t)}</p>
                     </div>
                   </div>
 
@@ -155,7 +144,7 @@ export default async function PressKitPage() {
                           
                           {asset.fields.lastUpdated && (
                             <p className="text-xs text-gray-500">
-                              Updated: {new Date(asset.fields.lastUpdated).toLocaleDateString("en-US", {
+                              {t('updated')}: {new Date(asset.fields.lastUpdated).toLocaleDateString("en-US", {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric"
@@ -176,7 +165,7 @@ export default async function PressKitPage() {
                               className="flex items-center gap-2"
                             >
                               <Download className="h-4 w-4" />
-                              Download
+                              {t('download')}
                             </a>
                           </Button>
                         </CardContent>
@@ -190,8 +179,8 @@ export default async function PressKitPage() {
         ) : (
           <div className="text-center py-16 border-2 border-dashed border-gray-700 rounded-lg bg-gray-900/50">
             <Folder className="mx-auto h-12 w-12 text-gray-500" />
-            <h3 className="mt-4 text-lg font-medium text-white">No Press Kit Assets Found</h3>
-            <p className="mt-2 text-sm text-gray-400">Press kit resources will appear here when available.</p>
+            <h3 className="mt-4 text-lg font-medium text-white">{t('noAssets.title')}</h3>
+            <p className="mt-2 text-sm text-gray-400">{t('noAssets.description')}</p>
             <p className="mt-1 text-xs text-gray-500">
               Ensure you have published entries with the content type ID 'pressKitAsset' in Contentful.
             </p>
@@ -200,17 +189,17 @@ export default async function PressKitPage() {
 
         {/* Contact Information */}
         <div className="mt-16 p-6 bg-gray-900 border border-gray-700 rounded-lg">
-          <h2 className="text-2xl font-semibold text-white mb-4">Media Contact</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4">{t('mediaContact')}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold text-white mb-2">Press Inquiries</h3>
+              <h3 className="font-semibold text-white mb-2">{t('pressInquiries')}</h3>
               <p className="text-gray-300 mb-1">Sarah Johnson</p>
               <p className="text-gray-400 text-sm mb-1">Director of Communications</p>
               <p className="text-gray-400 text-sm">press@eightphases.com</p>
               <p className="text-gray-400 text-sm">+1 (555) 123-4567</p>
             </div>
             <div>
-              <h3 className="font-semibold text-white mb-2">Partnership Inquiries</h3>
+              <h3 className="font-semibold text-white mb-2">{t('partnershipInquiries')}</h3>
               <p className="text-gray-300 mb-1">Michael Chen</p>
               <p className="text-gray-400 text-sm mb-1">Business Development</p>
               <p className="text-gray-400 text-sm">partnerships@eightphases.com</p>

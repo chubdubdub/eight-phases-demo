@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
+import { useTranslations } from 'next-intl'
 import Link from "next/link"
 import Image from "next/image"
 import { AlertCircle, Moon, Filter, Grid, List } from "lucide-react"
@@ -18,6 +19,7 @@ interface PressRoomClientProps {
 }
 
 export function PressRoomClient({ initialPressReleases, availableTags }: PressRoomClientProps) {
+  const t = useTranslations('pressRoom')
   const [filters, setFilters] = useState<SearchFilters>({})
   const [showFilters, setShowFilters] = useState(false)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
@@ -90,7 +92,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
             value={filters.query || ""}
             onChange={(query) => handleFiltersChange({ ...filters, query })}
             className="w-full lg:max-w-lg"
-            placeholder="Search press releases, categories, or tags..."
+            placeholder={t('search.placeholder')}
           />
           
           <div className="flex items-center gap-2">
@@ -101,7 +103,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
               className="flex items-center gap-2"
             >
               <Filter className="h-4 w-4" />
-              Filters
+              {t('filters.button')}
             </Button>
             
             <div className="flex items-center border border-gray-700 rounded-md">
@@ -129,8 +131,8 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
         <div className="flex items-center justify-between text-sm text-gray-400">
           <span>
             {filteredPressReleases.length === initialPressReleases.items.length
-              ? `${filteredPressReleases.length} press releases`
-              : `${filteredPressReleases.length} of ${initialPressReleases.items.length} press releases`
+              ? t('results.showing', { count: filteredPressReleases.length })
+              : t('results.filtered', { filtered: filteredPressReleases.length, total: initialPressReleases.items.length })
             }
           </span>
         </div>
@@ -226,7 +228,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
                           ))}
                           {release.fields.tags.length > 3 && (
                             <span className="px-2 py-1 bg-gray-800 text-gray-400 text-xs rounded-md">
-                              +{release.fields.tags.length - 3} more
+                              {t('tags.more', { count: release.fields.tags.length - 3 })}
                             </span>
                           )}
                         </div>
@@ -238,7 +240,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
                         href={`/press/${release.fields.slug}`}
                         className="text-sm font-semibold text-primary hover:underline"
                       >
-                        Read More &rarr;
+                        {t('readMore')} &rarr;
                       </Link>
                     </CardFooter>
                   </div>
@@ -248,11 +250,11 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
           ) : (
             <div className="text-center py-16 border-2 border-dashed border-gray-700 rounded-lg bg-gray-900/50">
               <AlertCircle className="mx-auto h-12 w-12 text-gray-500" />
-              <h3 className="mt-4 text-lg font-medium text-white">No Press Releases Found</h3>
+              <h3 className="mt-4 text-lg font-medium text-white">{t('noResults.title')}</h3>
               <p className="mt-2 text-sm text-gray-400">
                 {Object.keys(filters).length > 1 || filters.query
-                  ? "Try adjusting your search terms or filters."
-                  : "Please check your Contentful space configuration."
+                  ? t('noResults.searchAdjust')
+                  : t('noResults.configError')
                 }
               </p>
               {(Object.keys(filters).length > 1 || filters.query) && (
@@ -262,7 +264,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
                   onClick={() => setFilters({})}
                   className="mt-4"
                 >
-                  Clear all filters
+                  {t('filters.clearAll')}
                 </Button>
               )}
             </div>
