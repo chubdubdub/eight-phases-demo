@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
+import { useTranslations, useLocale } from "next-intl"
 import Link from "next/link"
 import Image from "next/image"
 import { AlertCircle, Moon, Filter, Grid, List } from "lucide-react"
@@ -18,6 +19,8 @@ interface PressRoomClientProps {
 }
 
 export function PressRoomClient({ initialPressReleases, availableTags }: PressRoomClientProps) {
+  const t = useTranslations()
+  const locale = useLocale()
   const [filters, setFilters] = useState<SearchFilters>({})
   const [showFilters, setShowFilters] = useState(false)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
@@ -90,7 +93,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
             value={filters.query || ""}
             onChange={(query) => handleFiltersChange({ ...filters, query })}
             className="w-full lg:max-w-lg"
-            placeholder="Search press releases, categories, or tags..."
+            placeholder={t('home.searchPlaceholder')}
           />
           
           <div className="flex items-center gap-2">
@@ -101,7 +104,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
               className="flex items-center gap-2"
             >
               <Filter className="h-4 w-4" />
-              Filters
+              {t('home.filters')}
             </Button>
             
             <div className="flex items-center border border-gray-700 rounded-md">
@@ -129,8 +132,8 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
         <div className="flex items-center justify-between text-sm text-gray-400">
           <span>
             {filteredPressReleases.length === initialPressReleases.items.length
-              ? `${filteredPressReleases.length} press releases`
-              : `${filteredPressReleases.length} of ${initialPressReleases.items.length} press releases`
+              ? t('home.results.showing', { count: filteredPressReleases.length })
+              : t('home.results.filtered', { filtered: filteredPressReleases.length, total: initialPressReleases.items.length })
             }
           </span>
         </div>
@@ -164,7 +167,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
                   }`}
                 >
                   <CardHeader className={`p-0 ${viewMode === 'list' ? 'w-48 flex-shrink-0' : ''}`}>
-                    <Link href={`/press/${release.fields.slug}`} className="block">
+                    <Link href={`/${locale}/press/${release.fields.slug}`} className="block">
                       <div className={`relative overflow-hidden ${viewMode === 'list' ? 'h-32' : 'h-48'}`}>
                         {release.fields.coverImage?.fields?.file?.url ? (
                           <Image
@@ -202,7 +205,7 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
                       
                       <CardTitle className={`mb-3 ${viewMode === 'list' ? 'text-lg' : 'text-xl'}`}>
                         <Link
-                          href={`/press/${release.fields.slug}`}
+                          href={`/${locale}/press/${release.fields.slug}`}
                           className="hover:text-primary transition-colors line-clamp-2"
                         >
                           {release.fields.title}
@@ -235,10 +238,10 @@ export function PressRoomClient({ initialPressReleases, availableTags }: PressRo
                     
                     <CardFooter className="p-6 pt-0">
                       <Link
-                        href={`/press/${release.fields.slug}`}
+                        href={`/${locale}/press/${release.fields.slug}`}
                         className="text-sm font-semibold text-primary hover:underline"
                       >
-                        Read More &rarr;
+                        {t('home.readMore')} &rarr;
                       </Link>
                     </CardFooter>
                   </div>

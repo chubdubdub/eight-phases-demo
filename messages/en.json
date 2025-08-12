@@ -1,0 +1,107 @@
+{
+  "navigation": {
+    "home": "Press Room",
+    "pressKit": "Press Kit",
+    "backToHome": "Back to Press Room"
+  },
+  "home": {
+    "title": "Latest News",
+    "subtitle": "Stay up-to-date with the latest announcements and media coverage from Eight Phases.",
+    "searchPlaceholder": "Search press releases, categories, or tags...",
+    "filters": "Filters",
+    "clearAll": "Clear all",
+    "activeFilters": "Active filters:",
+    "results": {
+      "showing": "{count} press releases",
+      "filtered": "{filtered} of {total} press releases"
+    },
+    "viewMode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "noResults": {
+      "title": "No Press Releases Found",
+      "description": "Try adjusting your search terms or filters.",
+      "configError": "Please check your Contentful space configuration.",
+      "clearFilters": "Clear all filters"
+    },
+    "readMore": "Read More",
+    "mediaResources": {
+      "title": "Media Resources",
+      "description": "Access our complete press kit with logos, brand guidelines, high-resolution images, and company information.",
+      "downloadButton": "Download Press Kit"
+    }
+  },
+  "filters": {
+    "categories": "Categories",
+    "tags": "Tags", 
+    "dateRange": "Date Range",
+    "from": "From",
+    "to": "To",
+    "showMore": "Show more ({count})",
+    "showLess": "Show less"
+  },
+  "categories": {
+    "Awards": "Awards",
+    "Hotel Openings": "Hotel Openings",
+    "Partnerships": "Partnerships", 
+    "Executive News": "Executive News",
+    "Company Updates": "Company Updates",
+    "Events": "Events",
+    "Sustainability": "Sustainability"
+  },
+  "pressKit": {
+    "title": "Press Kit",
+    "subtitle": "Download official logos, brand guidelines, fact sheets, and high-resolution images for your coverage of Eight Phases Hotels.",
+    "aboutTitle": "About Eight Phases Hotels",
+    "aboutDescription": "Eight Phases Hotels represents a new era in luxury hospitality, combining timeless elegance with modern innovation. Our properties offer guests exceptional experiences across unique destinations worldwide.",
+    "founded": "Founded",
+    "properties": "Properties",
+    "headquarters": "Headquarters",
+    "worldwide": "Worldwide",
+    "download": "Download",
+    "updated": "Updated",
+    "noAssets": {
+      "title": "No Press Kit Assets Found",
+      "description": "Press kit resources will appear here when available."
+    },
+    "mediaContact": "Media Contact",
+    "pressInquiries": "Press Inquiries",
+    "partnershipInquiries": "Partnership Inquiries",
+    "assetCategories": {
+      "Logos": {
+        "title": "Logos",
+        "description": "Official Eight Phases logos in various formats and sizes"
+      },
+      "Brand Guidelines": {
+        "title": "Brand Guidelines", 
+        "description": "Brand usage guidelines and style standards"
+      },
+      "Fact Sheets": {
+        "title": "Fact Sheets",
+        "description": "Company information and key statistics"
+      },
+      "Images": {
+        "title": "Images",
+        "description": "High-resolution property and marketing images"
+      },
+      "Documents": {
+        "title": "Documents",
+        "description": "Additional corporate documents and resources"
+      }
+    }
+  },
+  "article": {
+    "tags": "Tags",
+    "relatedArticles": "Related Articles",
+    "moreFromCategory": "More news from {category}",
+    "backToPress": "Back to Press Room"
+  },
+  "footer": {
+    "copyright": "© {year} Eight Phases Hotels. All rights reserved."
+  },
+  "language": {
+    "switchTo": "Switch to {language}",
+    "current": "Current language: {language}"
+  }
+}

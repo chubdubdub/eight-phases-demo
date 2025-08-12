@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { getTranslations } from "next-intl/server"
 import { getPressReleases, getPressReleaseTags } from "@/lib/contentful"
 import { ErrorDisplay } from "@/components/error-display"
 import { PressRoomClient } from "@/components/press-room-client"
@@ -6,7 +7,8 @@ import { Button } from "@/components/ui/button"
 
 export const revalidate = 300 // 5 minutes
 
-export default async function PressRoomPage() {
+export default async function PressRoomPage({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations()
   const [pressReleasesResult, tagsResult] = await Promise.all([
     getPressReleases(),
     getPressReleaseTags()
@@ -26,9 +28,9 @@ export default async function PressRoomPage() {
     <div className="py-12 md:py-16 px-4 md:px-8">
       {/* Header Section */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">Latest News</h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">{t('home.title')}</h2>
         <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-          Stay up-to-date with the latest announcements and media coverage from Eight Phases.
+          {t('home.subtitle')}
         </p>
       </div>
 
@@ -41,13 +43,13 @@ export default async function PressRoomPage() {
       {/* Press Kit Section */}
       <div className="mt-16 text-center">
         <div className="max-w-2xl mx-auto">
-          <h3 className="text-2xl font-semibold text-white mb-4">Media Resources</h3>
+          <h3 className="text-2xl font-semibold text-white mb-4">{t('home.mediaResources.title')}</h3>
           <p className="text-gray-400 mb-6">
-            Access our complete press kit with logos, brand guidelines, high-resolution images, and company information.
+            {t('home.mediaResources.description')}
           </p>
-          <Link href="/press-kit">
+          <Link href={`/${locale}/press-kit`}>
             <Button variant="outline" size="lg">
-              Download Press Kit
+              {t('home.mediaResources.downloadButton')}
             </Button>
           </Link>
         </div>

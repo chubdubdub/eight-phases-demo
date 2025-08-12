@@ -1,0 +1,107 @@
+{
+  "navigation": {
+    "home": "Pressebereich",
+    "pressKit": "Presse-Kit",
+    "backToHome": "Zurück zum Pressebereich"
+  },
+  "home": {
+    "title": "Aktuelle Nachrichten",
+    "subtitle": "Bleiben Sie auf dem Laufenden mit den neuesten Ankündigungen und Medienberichten von Eight Phases.",
+    "searchPlaceholder": "Pressemitteilungen, Kategorien oder Tags durchsuchen...",
+    "filters": "Filter",
+    "clearAll": "Alle löschen",
+    "activeFilters": "Aktive Filter:",
+    "results": {
+      "showing": "{count} Pressemitteilungen",
+      "filtered": "{filtered} von {total} Pressemitteilungen"
+    },
+    "viewMode": {
+      "grid": "Rasteransicht",
+      "list": "Listenansicht"
+    },
+    "noResults": {
+      "title": "Keine Pressemitteilungen gefunden",
+      "description": "Versuchen Sie, Ihre Suchbegriffe oder Filter anzupassen.",
+      "configError": "Bitte überprüfen Sie Ihre Contentful-Space-Konfiguration.",
+      "clearFilters": "Alle Filter löschen"
+    },
+    "readMore": "Weiterlesen",
+    "mediaResources": {
+      "title": "Medienressourcen",
+      "description": "Greifen Sie auf unser vollständiges Presse-Kit mit Logos, Markenrichtlinien, hochauflösenden Bildern und Unternehmensinformationen zu.",
+      "downloadButton": "Presse-Kit herunterladen"
+    }
+  },
+  "filters": {
+    "categories": "Kategorien",
+    "tags": "Tags",
+    "dateRange": "Datumsbereich",
+    "from": "Von",
+    "to": "Bis",
+    "showMore": "Mehr anzeigen ({count})",
+    "showLess": "Weniger anzeigen"
+  },
+  "categories": {
+    "Awards": "Auszeichnungen",
+    "Hotel Openings": "Hoteleröffnungen",
+    "Partnerships": "Partnerschaften",
+    "Executive News": "Führungskräfte-News",
+    "Company Updates": "Unternehmensnews",
+    "Events": "Veranstaltungen",
+    "Sustainability": "Nachhaltigkeit"
+  },
+  "pressKit": {
+    "title": "Presse-Kit",
+    "subtitle": "Laden Sie offizielle Logos, Markenrichtlinien, Factsheets und hochauflösende Bilder für Ihre Berichterstattung über Eight Phases Hotels herunter.",
+    "aboutTitle": "Über Eight Phases Hotels",
+    "aboutDescription": "Eight Phases Hotels repräsentiert eine neue Ära der Luxus-Gastfreundschaft und verbindet zeitlose Eleganz mit moderner Innovation. Unsere Immobilien bieten Gästen außergewöhnliche Erlebnisse an einzigartigen Destinationen weltweit.",
+    "founded": "Gegründet",
+    "properties": "Immobilien",
+    "headquarters": "Hauptsitz",
+    "worldwide": "Weltweit",
+    "download": "Herunterladen",
+    "updated": "Aktualisiert",
+    "noAssets": {
+      "title": "Keine Presse-Kit-Assets gefunden",
+      "description": "Presse-Kit-Ressourcen erscheinen hier, wenn sie verfügbar sind."
+    },
+    "mediaContact": "Medienkontakt",
+    "pressInquiries": "Presseanfragen",
+    "partnershipInquiries": "Partnerschaftsanfragen",
+    "assetCategories": {
+      "Logos": {
+        "title": "Logos",
+        "description": "Offizielle Eight Phases Logos in verschiedenen Formaten und Größen"
+      },
+      "Brand Guidelines": {
+        "title": "Markenrichtlinien",
+        "description": "Markennutzungsrichtlinien und Stilstandards"
+      },
+      "Fact Sheets": {
+        "title": "Factsheets",
+        "description": "Unternehmensinformationen und wichtige Statistiken"
+      },
+      "Images": {
+        "title": "Bilder",
+        "description": "Hochauflösende Immobilien- und Marketingbilder"
+      },
+      "Documents": {
+        "title": "Dokumente",
+        "description": "Zusätzliche Unternehmensdokumente und Ressourcen"
+      }
+    }
+  },
+  "article": {
+    "tags": "Tags",
+    "relatedArticles": "Verwandte Artikel",
+    "moreFromCategory": "Weitere Nachrichten aus {category}",
+    "backToPress": "Zurück zum Pressebereich"
+  },
+  "footer": {
+    "copyright": "© {year} Eight Phases Hotels. Alle Rechte vorbehalten."
+  },
+  "language": {
+    "switchTo": "Wechseln zu {language}",
+    "current": "Aktuelle Sprache: {language}"
+  }
+}

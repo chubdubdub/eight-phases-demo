@@ -1,0 +1,107 @@
+{
+  "navigation": {
+    "home": "Salle de Presse",
+    "pressKit": "Kit de Presse",
+    "backToHome": "Retour à la Salle de Presse"
+  },
+  "home": {
+    "title": "Dernières Actualités",
+    "subtitle": "Restez informé des dernières annonces et de la couverture médiatique d'Eight Phases.",
+    "searchPlaceholder": "Rechercher communiqués, catégories ou tags...",
+    "filters": "Filtres",
+    "clearAll": "Tout effacer",
+    "activeFilters": "Filtres actifs :",
+    "results": {
+      "showing": "{count} communiqués de presse",
+      "filtered": "{filtered} sur {total} communiqués de presse"
+    },
+    "viewMode": {
+      "grid": "Vue grille",
+      "list": "Vue liste"
+    },
+    "noResults": {
+      "title": "Aucun Communiqué de Presse Trouvé",
+      "description": "Essayez d'ajuster vos termes de recherche ou vos filtres.",
+      "configError": "Veuillez vérifier la configuration de votre espace Contentful.",
+      "clearFilters": "Effacer tous les filtres"
+    },
+    "readMore": "Lire Plus",
+    "mediaResources": {
+      "title": "Ressources Médias",
+      "description": "Accédez à notre kit de presse complet avec logos, directives de marque, images haute résolution et informations sur l'entreprise.",
+      "downloadButton": "Télécharger le Kit de Presse"
+    }
+  },
+  "filters": {
+    "categories": "Catégories",
+    "tags": "Tags",
+    "dateRange": "Plage de Dates",
+    "from": "Du",
+    "to": "Au",
+    "showMore": "Afficher plus ({count})",
+    "showLess": "Afficher moins"
+  },
+  "categories": {
+    "Awards": "Récompenses",
+    "Hotel Openings": "Ouvertures d'Hôtels",
+    "Partnerships": "Partenariats",
+    "Executive News": "Actualités Dirigeants",
+    "Company Updates": "Actualités Entreprise",
+    "Events": "Événements",
+    "Sustainability": "Durabilité"
+  },
+  "pressKit": {
+    "title": "Kit de Presse",
+    "subtitle": "Téléchargez les logos officiels, les directives de marque, les fiches techniques et les images haute résolution pour votre couverture d'Eight Phases Hotels.",
+    "aboutTitle": "À Propos d'Eight Phases Hotels",
+    "aboutDescription": "Eight Phases Hotels représente une nouvelle ère dans l'hôtellerie de luxe, alliant élégance intemporelle et innovation moderne. Nos propriétés offrent aux clients des expériences exceptionnelles dans des destinations uniques du monde entier.",
+    "founded": "Fondé",
+    "properties": "Propriétés",
+    "headquarters": "Siège Social",
+    "worldwide": "Monde Entier",
+    "download": "Télécharger",
+    "updated": "Mis à jour",
+    "noAssets": {
+      "title": "Aucun Asset de Kit de Presse Trouvé",
+      "description": "Les ressources du kit de presse apparaîtront ici lorsqu'elles seront disponibles."
+    },
+    "mediaContact": "Contact Média",
+    "pressInquiries": "Demandes de Presse",
+    "partnershipInquiries": "Demandes de Partenariat",
+    "assetCategories": {
+      "Logos": {
+        "title": "Logos",
+        "description": "Logos officiels Eight Phases dans divers formats et tailles"
+      },
+      "Brand Guidelines": {
+        "title": "Directives de Marque",
+        "description": "Directives d'utilisation de la marque et normes de style"
+      },
+      "Fact Sheets": {
+        "title": "Fiches Techniques",
+        "description": "Informations sur l'entreprise et statistiques clés"
+      },
+      "Images": {
+        "title": "Images",
+        "description": "Images haute résolution des propriétés et du marketing"
+      },
+      "Documents": {
+        "title": "Documents",
+        "description": "Documents et ressources d'entreprise supplémentaires"
+      }
+    }
+  },
+  "article": {
+    "tags": "Tags",
+    "relatedArticles": "Articles Connexes",
+    "moreFromCategory": "Plus d'actualités de {category}",
+    "backToPress": "Retour à la Salle de Presse"
+  },
+  "footer": {
+    "copyright": "© {year} Eight Phases Hotels. Tous droits réservés."
+  },
+  "language": {
+    "switchTo": "Changer vers {language}",
+    "current": "Langue actuelle : {language}"
+  }
+}
